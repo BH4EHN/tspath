@@ -132,7 +132,7 @@ export class ParserEngine {
 		}
 
 		this.appRoot = path.resolve(this.projectPath, this.projectOptions.baseUrl);
-		this.appRoot = path.resolve(this.appRoot, this.projectOptions.outDir);
+		// this.appRoot = path.resolve(this.appRoot, this.projectOptions.outDir);
 		this.distRoot = path.resolve(this.projectPath, this.projectOptions.outDir);
 
 		let fileList = new Array<string>();
@@ -169,17 +169,18 @@ export class ParserEngine {
 
 			// 2018-06-02: Workaround for bug with same prefix Aliases e.g @db and @dbCore
 			// Cut alias prefix for mapping comparison
-			let requirePrefix = jsRequire.substring(0, jsRequire.indexOf(path.sep))
+			let requirePrefix = jsRequire.substring(0, jsRequire.indexOf('/'));
 
 			if (requirePrefix == alias) {
 				let result = jsRequire.replace(alias, mapping);
 				Utils.replaceDoubleSlashes(result);
 				result = Utils.ensureTrailingPathDelimiter(result);
 
-				let absoluteJsRequire = path.join(this.distRoot, result);
+				let absoluteJsRequire = path.posix.join(this.distRoot, result);
 				let sourceDir = path.dirname(sourceFilename);
+				sourceDir.replace('\\', '/');
 
-				let relativePath = path.relative(sourceDir, absoluteJsRequire);
+				let relativePath = path.posix.relative(sourceDir, absoluteJsRequire);
 
 				/* If the path does not start with .. it´ not a sub directory
 				 * as in ../ or ..\ so assume it´ the same dir...
@@ -358,7 +359,7 @@ export class ParserEngine {
 			else {
 				let tmpExt = path.extname(file);
 
-				if ((fileExtension.length > 0 && scope.matchExtension(fileExtension))
+				if ((fileExtension.length > 0 && scope.matchExtension(fileExtension) && scope.matchExtension(tmpExt))
 					|| (fileExtension.length < 1)
 					|| (fileExtension == "*.*")) {
 					let fullFilename = path.join(dir, file);

@@ -51,7 +51,7 @@ export class Utils {
 			return;
 		}
 
-		let pathSep = path.sep;
+		let pathSep = '/';
 		if (searchPath.endsWith(pathSep) == false) {
 			searchPath = searchPath + pathSep;
 		}

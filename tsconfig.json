@@ -4,13 +4,13 @@
     "module": "commonjs",
     "outDir": "./dist",
     "strict": false,
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "declaration": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "inlineSourceMap": true
   },
   "include": [
-    "./",
     "src/**/*"
   ],
   "exclude": [
