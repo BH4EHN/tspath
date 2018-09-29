@@ -72,3 +72,9 @@ Yes, that´s it, really!
 
 
 Say bye bye to the relative path hell!
+
+---
+Command line parameters
+- `ext` or `filter`, input file filter
+- `force` or `f`, run without prompt
+- `preserve`, minimize output
