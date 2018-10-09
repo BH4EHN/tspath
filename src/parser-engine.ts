@@ -177,8 +177,9 @@ export class ParserEngine {
 				result = Utils.ensureTrailingPathDelimiter(result);
 
 				let absoluteJsRequire = path.posix.join(this.distRoot, result);
+                absoluteJsRequire = absoluteJsRequire.replace(/\\/g, '/');
 				let sourceDir = path.dirname(sourceFilename);
-				sourceDir.replace('\\', '/');
+                sourceDir = sourceDir.replace(/\\/g, '/');
 
 				let relativePath = path.posix.relative(sourceDir, absoluteJsRequire);
 
