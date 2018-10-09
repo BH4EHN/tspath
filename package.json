@@ -1,17 +1,18 @@
 {
-  "name": "tspath",
+  "name": "@bh4ehn/tspath",
   "version": "1.3.5",
   "description": "TypeScript Path Igniter resolves @paths specified in tsconfig",
   "scripts": {
-    "build": "tsc",
-    "test": "mocha -r ts-node/register test/**.*/test.ts",
-    "tspath": "node ./dist/tspath.js",
-    "preinstall": "tsc"
+    "prepare": "tsc",
+    "test": "mocha -r ts-node/register test/**.*/test.ts"
   },
   "preferGlobal": true,
   "bin": {
     "tspath": "./dist/tspath.js"
   },
+  "files": [
+    "dist/*"
+  ],
   "keywords": [
     "relative",
     "path",
@@ -20,10 +21,10 @@
     "resolve",
     "alias"
   ],
-  "author": "Patrik Forsberg <patrik.forsberg@coldmind.com>",
+  "author": "BH4EHN <edyuy@zmyseries.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/duffman/tspath.git"
+    "url": "https://github.com/BH4EHN/tspath"
   },
   "license": "LGPL-2",
   "dependencies": {
